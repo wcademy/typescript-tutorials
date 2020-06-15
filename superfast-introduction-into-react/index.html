@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Супербыстрое погружение в React</title>
+
+    <!-- подключаем React и ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- -->
+
+    <!-- подключаем Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <!-- -->
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  class HelloWorld extends React.Component {
+    state = {
+      message: 'hello',
+    };
+
+    updateState = () => {
+      this.setState((state) => {
+        return {
+          message: state.message === 'hello' ? 'bye' : 'hello',
+        };
+      });
+    };
+
+    render() {
+      return <div>
+        <h1>{this.state.message}, {this.props.name}!</h1>
+        <button onClick={this.updateState}>Клик-клик-клик
+        </button>
+      </div>;
+    }
+  }
+
+  ReactDOM.render(
+    <HelloWorld name="wcademy"/>,
+    document.getElementById('root'),
+  );
+</script>
+</body>
+</html>
